@@ -21,9 +21,7 @@ router.route('/bears')
     //ขอค่าจาก  bear ใช้ get
 
     .post((req, res) => {
-
         let bear = {}
-
         bear.id = bears[bears.length - 1].id + 1;
         bear.name = req.body.name;
         bear.weight = req.body.weight;
@@ -56,7 +54,7 @@ router.route('/bears/:bear_id')
 
     .delete((req, res) => {                 
         // Delete a bear
-        // delete     bears[req.params.bear_id]
+        // delete  bears[req.params.bear_id]
         let id = req.params.bear_id
         let index = bears.findIndex(bear => bear.id === +id)
         bears.splice(index, 1)
