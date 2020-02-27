@@ -13,14 +13,6 @@ const Bear = () => {
   const [weight, setWeight] = useState(0);
 
 
-  const getBear = async () => {
-
-    const result = await axios.get('http://localhost:8000/api/bears')
-    console.log(result);
-    setBears(result.data)
-
-
-  }
 
   //useEffect เอาไว้เรียกใช้เมื่อ aysnc await render เรียบร้อยแล้ว
 
@@ -30,6 +22,15 @@ const Bear = () => {
     console.log('UseEffect is running');
 
   })
+
+  const getBear = async () => {
+
+    const result = await axios.get('http://localhost:8000/api/bears')
+    console.log(result);
+    setBears(result.data)
+
+
+  }
 
   const getBears = async (id) => {
 
@@ -56,7 +57,7 @@ const Bear = () => {
 
   const deleteBears = async (id) => {
 
-    const result = await axios.delete(`http://localhost/api/bears/${id}`)       
+    const result = await axios.delete(`http://localhost/api/bears/${id}`)
     getBear()
 
 
@@ -85,18 +86,16 @@ const Bear = () => {
 
           <li key={index}>
             {bear.name} : {bear.weight} <br />
-            <button onClick={() => getBears(bear.id)}> Get </button> <br />
-            <button onClick={() => deleteBears(bear.id)}> Del </button><br />
-             <button onClick={() => updatesBears(bear.id)}>Update</button> <br />
+            <button onClick={() => getBears(bear.id)}>Get</button> <br />
+            <button onClick={() => deleteBears(bear.id)}>Del</button><br />
+            <button onClick={() => updatesBears(bear.id)}>Update</button> <br />
           </li>
         )
       })
-      else {
+    else {
 
-        return (<h2> No bear </h2>)
-
-
-      }
+      return (<h2> No bear </h2>)
+    }
 
   }
 
@@ -105,29 +104,30 @@ const Bear = () => {
   return (
 
     <div>
-    Bear
+      Bear
     <ul>
-         {printBears()}
+        {printBears()}
     </ul>
-    <h2>Get Bear</h2>
-    Get: {name} : {weight}
 
-    <h2>Add Bear</h2>
-    Name: 
-    <input 
+      <h2>Get Bear</h2>
+      Get: {name} : {weight}
+
+      <h2>Add Bear</h2>
+      Name:
+    <input
         placeholder="name"
         type="text"
         name="name"
-        onChange={ (e)=> setName(e.target.value) }
-        /> <br/>
-    Weight:
-    <input                 
+        onChange={(e) => setName(e.target.value)}
+      /> <br />
+      Weight:
+    <input
         type="number"
         name="weight"
-        onChange={ (e)=> setWeight(e.target.value) }
-        /><br/>
-    <button onClick={addBears}>Add </button>
-</div>
+        onChange={(e) => setWeight(e.target.value)}
+      /><br />
+      <button onClick={addBears}>Add </button>
+    </div>
 
   );
 }
