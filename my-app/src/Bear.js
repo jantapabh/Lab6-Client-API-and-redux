@@ -210,6 +210,7 @@ export default () => {
                  {printBears()}
             </ul>
             <h2>Get Bear</h2>
+            
             Get: {name} : {weight}
 
             <h2>Add Bear</h2>
@@ -220,6 +221,7 @@ export default () => {
                 name="name"
                 onChange={ (e)=> setName(e.target.value) }
                 /> <br/>
+
             Weight:
             <input                 
                 type="number"
